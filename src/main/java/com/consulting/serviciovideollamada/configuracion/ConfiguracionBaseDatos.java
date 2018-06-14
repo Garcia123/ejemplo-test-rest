@@ -12,12 +12,24 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.consulting.serviciovideollamada.beans.DataBaseConf;
+import com.consulting.serviciovideollamada.utils.Propiedades;
+import com.consulting.serviciovideollamada.utils.PropiedadesImpl;
+import com.consulting.serviciovideollamada.utils.SistemaOperativo;
+import com.consulting.serviciovideollamada.utils.SistemaOperativoImpl;
+
 @Configuration
 @EnableTransactionManagement
 public class ConfiguracionBaseDatos {
 
+	private Propiedades propiedades = new PropiedadesImpl();
+	private SistemaOperativo so = new SistemaOperativoImpl();
+	private String path = so.getSistemaOperativo();
+	private DataBaseConf conf = new DataBaseConf(propiedades.getProperties(path));
+
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
+		System.out.println("conf : " + conf);
 		LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
 		sessionFactoryBean.setDataSource(dataSource());
 		sessionFactoryBean.setPackagesToScan("com.consulting.serviciovideollamada.model");
@@ -28,18 +40,18 @@ public class ConfiguracionBaseDatos {
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		dataSource.setUrl("jdbc:sqlserver://127.0.0.1:1433;databaseName=VIDEOLLAMADA_CONCYTEC");
-		dataSource.setUsername("sa");
-		dataSource.setPassword("cym20032018");
+		dataSource.setDriverClassName(conf.getDriverClassName());
+		dataSource.setUrl(conf.getUrl());
+		dataSource.setUsername(conf.getUserName());
+		dataSource.setPassword(conf.getPassword());
 
 		return dataSource;
 	}
 
 	public Properties hibernetProperties() {
 		Properties properties = new Properties();
-		properties.put("hibernate.dialect", "org.hibernate.dialect.SQLServerDialect");
-		properties.put("show_sql", "true");
+		properties.put("hibernate.dialect", conf.getHibernateDialect());
+		properties.put("show_sql", conf.isShowSql());
 
 		return properties;
 	}
@@ -50,6 +62,6 @@ public class ConfiguracionBaseDatos {
 		HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
 		hibernateTransactionManager.setSessionFactory(sessionFactory().getObject());
 		return hibernateTransactionManager;
-	} 
+	}
 
 }
