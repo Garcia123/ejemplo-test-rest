@@ -20,4 +20,16 @@ public class DoctorServiceImpl implements DoctorService {
 		return _doctorDAO.findAllDoctor();
 	}
 
+	@Override
+	public void update(Doctor doctor) {
+		_doctorDAO.update(doctor);
+		
+	}
+
+	@Override
+	public Doctor findByID(Long id) {
+		// TODO Auto-generated method stub
+		return _doctorDAO.findByID(id);
+	}
+
 }

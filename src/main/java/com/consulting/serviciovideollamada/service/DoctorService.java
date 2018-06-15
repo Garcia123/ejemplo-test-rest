@@ -8,4 +8,8 @@ public interface DoctorService {
 	
 	List<Doctor> findAllDoctor();
 	
+	void update(Doctor doctor);
+	
+	Doctor findByID(Long id);
+	
 }

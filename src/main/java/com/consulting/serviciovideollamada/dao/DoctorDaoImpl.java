@@ -19,4 +19,16 @@ public class DoctorDaoImpl extends AdtractSession implements DoctorDao {
 		return getSession().createQuery("from Doctor").list();
 	}
 
+	@Override
+	public void update(Doctor doctor) {
+		// TODO Auto-generated method stub
+		getSession().update(doctor);
+	}
+
+	@Override
+	public Doctor findByID(Long id) {
+		// TODO Auto-generated method stub
+		return getSession().get(Doctor.class, id);
+	}
+
 }
