@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.consulting.serviciovideollamada.model.Doctor;
 import com.consulting.serviciovideollamada.service.DoctorService;
@@ -40,7 +41,7 @@ public class DoctorController {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value = "/doctor/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ResponseEntity<Doctor> getDoctor(@PathVariable("id") Long id) {
-		
+
 		if (id == null)
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 
@@ -48,6 +49,21 @@ public class DoctorController {
 
 		if (doctor == null)
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
+
+		return new ResponseEntity<Doctor>(doctor, HttpStatus.OK);
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@RequestMapping(value = "/doctor/{id}", method = RequestMethod.PATCH, headers = "Accept=application/json")
+	public ResponseEntity<Doctor> updateDoctor(@PathVariable("id") Long id, @RequestBody Doctor paranDocotr) {
+
+		Doctor doctor = _doctoresService.findByID(id);
+		if (doctor == null)
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+
+		doctor.setDoctor(paranDocotr);
+
+		_doctoresService.update(doctor);
 
 		return new ResponseEntity<Doctor>(doctor, HttpStatus.OK);
 	}

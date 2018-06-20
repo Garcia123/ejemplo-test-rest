@@ -67,7 +67,18 @@ public class Doctor implements Serializable {
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
-	
-	
+
+	public void setDoctor(Doctor doctor) {
+
+		if (doctor.getNombre() != null)
+			this.setNombre(doctor.getNombre().trim());
+		if (doctor.getApellidos() != null)
+			this.setApellidos(doctor.getApellidos().trim());
+		if (doctor.getEspecialidad() != null)
+			this.setEspecialidad(doctor.getEspecialidad().trim());
+		if (doctor.getEstado() > 0)
+			this.setEstado(doctor.getEstado());
+
+	}
 
 }
