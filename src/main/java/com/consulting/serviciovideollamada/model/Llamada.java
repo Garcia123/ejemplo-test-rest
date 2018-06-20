@@ -11,7 +11,7 @@ public class Llamada {
 	
 	@Id
 	@Column(name = "ID")
-	private int id;
+	private Long id;
 	
 	@Column(name = "ID_DOCTOR_EMISOR")
 	private int idDoctorEmisor;
@@ -31,11 +31,11 @@ public class Llamada {
 	@Column(name = "ESTADO")
 	private int estado;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
