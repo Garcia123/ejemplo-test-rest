@@ -1,10 +1,12 @@
 package com.consulting.serviciovideollamada.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.consulting.serviciovideollamada.dao.LlamadaDao;
 import com.consulting.serviciovideollamada.model.Llamada;
 
+@Service("llamadaService")
 public class LlamadaServiceImpl implements LlamadaService {
 
 	@Autowired

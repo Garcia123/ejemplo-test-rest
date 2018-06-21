@@ -1,7 +1,13 @@
 package com.consulting.serviciovideollamada.dao;
 
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
+
 import com.consulting.serviciovideollamada.model.Llamada;
 
+@Repository
+@Transactional
 public class LlamadaDaoImpl extends AdtractSession implements LlamadaDao {
 
 	@Override
