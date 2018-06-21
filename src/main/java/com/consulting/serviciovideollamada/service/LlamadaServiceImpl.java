@@ -28,4 +28,10 @@ public class LlamadaServiceImpl implements LlamadaService {
 		_llamadaDao.eliminarLlamada(id);
 	}
 
+	@Override
+	public Llamada buscarLlamadaPorIdReceptor(int idReceptor) {
+		// TODO Auto-generated method stub
+		return _llamadaDao.buscarLlamadaPorIdReceptor(idReceptor);
+	}
+
 }

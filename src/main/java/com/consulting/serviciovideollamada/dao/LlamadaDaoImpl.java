@@ -24,4 +24,12 @@ public class LlamadaDaoImpl extends AdtractSession implements LlamadaDao {
 			getSession().delete(llamada);
 	}
 
+	@Override
+	public Llamada buscarLlamadaPorIdReceptor(int idReceptor) {
+		// TODO Auto-generated method stub
+		return (Llamada) getSession().createQuery("from Llamada where idDoctorReceptor = :idDoctorReceptor")
+				.setParameter("idDoctorReceptor", idReceptor)
+				.uniqueResult();
+	}
+
 }

@@ -9,5 +9,7 @@ public interface LlamadaService {
 	Llamada buscarLlamadaPorId(Long id);
 
 	void eliminarLlamada(Long id);
+	
+	Llamada buscarLlamadaPorIdReceptor(int idReceptor);
 
 }

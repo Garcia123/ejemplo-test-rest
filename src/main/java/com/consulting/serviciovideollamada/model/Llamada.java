@@ -8,26 +8,26 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "LLAMADAS")
 public class Llamada {
-	
+
 	@Id
 	@Column(name = "ID")
 	private Long id;
-	
+
 	@Column(name = "ID_DOCTOR_EMISOR")
 	private int idDoctorEmisor;
-	
+
 	@Column(name = "NOMBRE_EMISOR")
 	private String nombreEmisor;
-	
+
 	@Column(name = "ID_DOCTOR_RECEPTOR")
 	private int idDoctorReceptor;
-	
+
 	@Column(name = "NOMBRE_RECEPTOR")
 	private String nonbreReceptor;
-	
+
 	@Column(name = "SALA")
 	private String sala;
-	
+
 	@Column(name = "ESTADO")
 	private int estado;
 
@@ -85,6 +85,13 @@ public class Llamada {
 
 	public void setEstado(int estado) {
 		this.estado = estado;
+	}
+
+	public boolean camposCompletos() {
+
+		return !(id == null || idDoctorEmisor == 0 || nombreEmisor == null || nombreEmisor.isEmpty()
+				|| idDoctorReceptor == 0 || nonbreReceptor == null || nonbreReceptor.isEmpty() || sala == null
+				|| sala.isEmpty() || estado == 0);
 	}
 
 }
