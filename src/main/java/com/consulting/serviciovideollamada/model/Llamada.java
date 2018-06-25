@@ -2,6 +2,8 @@ package com.consulting.serviciovideollamada.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +13,7 @@ public class Llamada {
 
 	@Id
 	@Column(name = "ID")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name = "ID_DOCTOR_EMISOR")
@@ -89,7 +92,7 @@ public class Llamada {
 
 	public boolean camposCompletos() {
 
-		return !(id == null || idDoctorEmisor == 0 || nombreEmisor == null || nombreEmisor.isEmpty()
+		return !(idDoctorEmisor == 0 || nombreEmisor == null || nombreEmisor.isEmpty()
 				|| idDoctorReceptor == 0 || nonbreReceptor == null || nonbreReceptor.isEmpty() || sala == null
 				|| sala.isEmpty() || estado == 0);
 	}
