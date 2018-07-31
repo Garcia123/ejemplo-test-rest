@@ -6,7 +6,7 @@
 	<groupId>com.consulting</groupId>
 	<artifactId>servicioVideoLlamada01</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>servicioVideoLlamada01</name>
 	<description>servicio para los datos de video llamada</description>
@@ -49,12 +49,12 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- se agrego para deployar como war y ponerlo en un tomcat -->
-		<!-- 
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
-		</dependency> -->
+		</dependency>
 	</dependencies>
 
 	<build>

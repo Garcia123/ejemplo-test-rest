@@ -27,6 +27,9 @@ public class Doctor implements Serializable {
 
 	@Column(name = "ESTADO")
 	private int estado;
+	
+	@Column(name = "ESTABLECIMIENTO")
+	private String establecimiento;
 
 	public Long getID() {
 		return ID;
@@ -67,11 +70,21 @@ public class Doctor implements Serializable {
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
+	
+	public String getEstablecimiento() {
+		return establecimiento;
+	}
+
+	public void setEstablecimiento(String establecimiento) {
+		this.establecimiento = establecimiento;
+	}
 
 	public void setDoctor(Doctor doctor) {
 
 		if (doctor.getNombre() != null)
 			this.setNombre(doctor.getNombre().trim());
+		if (doctor.getEstablecimiento() != null)
+			this.setEstablecimiento(doctor.getEstablecimiento().trim());
 		if (doctor.getApellidos() != null)
 			this.setApellidos(doctor.getApellidos().trim());
 		if (doctor.getEspecialidad() != null)
